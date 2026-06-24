@@ -39,7 +39,9 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function BlogPost() {
-  const { post } = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  if (!data) return null;
+  const { post } = data;
   return (
     <article className="pt-28 md:pt-32 pb-24 md:pb-32 bg-background">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
