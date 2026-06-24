@@ -52,7 +52,7 @@ export default function ContactForm() {
                   >
                     <option value="" disabled>Selecciona un servicio</option>
                     <option>Limpieza de Muebles</option>
-                    <option>Desinfección de Colchones</option>
+                    <option>Higienización de Colchones</option>
                     <option>Detallado de Vehículos</option>
                     <option>Alfombras y Cortinas</option>
                     <option>Lavado en Seco</option>
