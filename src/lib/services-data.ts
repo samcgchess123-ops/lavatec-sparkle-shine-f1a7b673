@@ -162,9 +162,7 @@ export const services: ServiceDetail[] = [
       "Limpieza cada 6 meses",
       "Ventilación recomendada post-servicio",
     ],
-    faqs: [
-      { q: "¿Es necesario bajarlas?", a: "No. Realizamos el servicio con las cortinas colocadas." },
-    ],
+    faqs: [],
     priceFrom: "Desde $40.000",
   },
   {
@@ -189,7 +187,7 @@ export const services: ServiceDetail[] = [
       "Extracción y secado controlado",
     ],
     duration: "1 a 2 horas",
-    surfaces: ["Camas pequeñas", "Camas grandes", "Cojines", "Mantas", "Accesorios textiles"],
+    surfaces: ["Camas pequeñas", "Camas grandes", "Cojines", "Accesorios textiles"],
     steamAdvantages: [
       "Mata bacterias sin químicos tóxicos",
       "Seguro para la mascota",
@@ -198,7 +196,6 @@ export const services: ServiceDetail[] = [
     recommendations: [
       "Higienización cada 2 a 3 meses",
       "Cepillar mascota regularmente",
-      "Lavar mantas semanalmente",
     ],
     faqs: [
       { q: "¿Es seguro para mascotas con alergias?", a: "Sí, no usamos químicos agresivos y eliminamos los alérgenos." },
@@ -210,9 +207,9 @@ export const services: ServiceDetail[] = [
     icon: Wind,
     title: "Sanitización Premium",
     shortDesc:
-      "Tratamiento completo de higienización con vapor para hogares con niños, mascotas o personas alérgicas.",
+      "Limpieza completa de varios muebles y espacios en una sola visita. Ideal para mudanzas, muebles nuevos o renovar tu hogar.",
     description:
-      "Programa integral de sanitización con vapor para hogares que requieren máxima higiene. Tratamos múltiples superficies y elementos textiles en una sola visita.",
+      "¿Acabas de mudarte? ¿Compraste muebles nuevos? ¿O quieres limpiar a profundidad los muebles de tu hogar? Este servicio está pensado para quienes desean realizar una limpieza completa de varios muebles y espacios en una sola visita. Podemos incluir salas, comedores, colchones, sillas, cabeceros, alfombras y más dentro de un paquete personalizado según las necesidades de tu hogar. Solo envíanos fotos o videos de los artículos que deseas limpiar, o agenda una visita de evaluación. Te prepararemos una propuesta integral para dejar tus muebles frescos, limpios y listos para disfrutar.",
     benefits: [
       "Higienización integral del hogar",
       "Reduce alérgenos respiratorios",
