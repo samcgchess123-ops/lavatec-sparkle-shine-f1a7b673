@@ -13,7 +13,7 @@ type GalleryItem =
 
 const items: GalleryItem[] = [
   { type: "before-after", before: sofaBefore, after: sofaAfter, label: "Limpieza profunda de sofá" },
-  { type: "before-after", before: mattressBefore, after: mattressAfter, label: "Desinfección de colchón" },
+  { type: "before-after", before: mattressBefore, after: mattressAfter, label: "Higienización de colchón" },
   { type: "placeholder", label: "Próximamente: alfombra residencial" },
   { type: "placeholder", label: "Próximamente: silla tapizada" },
   { type: "placeholder", label: "Próximamente: cama para mascota" },

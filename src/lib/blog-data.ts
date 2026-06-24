@@ -1,8 +1,8 @@
 import { BedDouble, Sofa, Layers, PawPrint } from "lucide-react";
-import mattressImg from "@/assets/blog-mattress.jpg.asset.json";
-import sofaImg from "@/assets/blog-sofa.jpg.asset.json";
-import chairsImg from "@/assets/blog-chairs.jpg.asset.json";
-import benchImg from "@/assets/blog-bench.jpg.asset.json";
+import mattressImg from "@/assets/blog-mattress-new.jpg.asset.json";
+import sofaImg from "@/assets/blog-sofa-new.jpg.asset.json";
+import chairsImg from "@/assets/blog-carpet-new.jpg.asset.json";
+import benchImg from "@/assets/blog-pet-new.jpg.asset.json";
 
 export type BlogPost = {
   slug: "limpiar-colchon" | "vapor-muebles" | "limpiar-alfombras" | "cama-mascotas";
