@@ -60,11 +60,11 @@ export const services: ServiceDetail[] = [
   {
     id: "colchones",
     icon: BedDouble,
-    title: "Desinfección de Colchones",
+    title: "Higienización de Colchones",
     shortDesc:
       "Vapor de alta temperatura para eliminar ácaros, bacterias y alérgenos. Descanso más saludable.",
     description:
-      "Sanitización profunda de colchones con vapor profesional. Eliminamos ácaros, células muertas, residuos orgánicos y alérgenos que se acumulan con el tiempo, mejorando la calidad de tu descanso.",
+      "Higienización profunda de colchones con vapor profesional. Eliminamos ácaros, células muertas, residuos orgánicos y alérgenos que se acumulan con el tiempo, mejorando la calidad de tu descanso.",
     benefits: [
       "Elimina ácaros y bacterias",
       "Remueve manchas y malos olores",
@@ -93,12 +93,12 @@ export const services: ServiceDetail[] = [
       { q: "¿Cuánto tarda en secar?", a: "Entre 2 y 3 horas gracias al sistema de extracción profesional." },
       { q: "¿Es seguro para bebés?", a: "Sí, no quedan residuos químicos en la superficie." },
     ],
-    priceFrom: "Desde $70.000",
+    priceFrom: "Desde $90.000",
   },
   {
     id: "alfombras",
     icon: Layers,
-    title: "Alfombras y Tapizados",
+    title: "Alfombras",
     shortDesc:
       "Lavado profundo con vapor que renueva fibras, elimina olores y devuelve el color original.",
     description:
@@ -116,7 +116,7 @@ export const services: ServiceDetail[] = [
       "Cepillado y secado controlado",
     ],
     duration: "1 a 3 horas según área",
-    surfaces: ["Alfombras de sala", "Tapetes orientales", "Tapizados de paredes", "Alfombras de oficina"],
+    surfaces: ["Alfombras de sala", "Tapetes orientales", "Alfombras de oficina"],
     steamAdvantages: [
       "Penetra fibras sin saturar",
       "Sin residuos pegajosos",
@@ -139,9 +139,8 @@ export const services: ServiceDetail[] = [
     shortDesc:
       "Lavado de cortinas sin desmontar. Elimina polvo, ácaros y olores conservando la caída original.",
     description:
-      "Limpieza de cortinas in situ con vapor, sin necesidad de desmontarlas. Remueve polvo acumulado, ácaros y olores manteniendo la forma y caída del textil.",
+      "Limpieza de cortinas in situ con vapor. Remueve polvo acumulado, ácaros y olores manteniendo la forma y caída del textil.",
     benefits: [
-      "Sin desmonte ni traslado",
       "Conserva la forma original",
       "Elimina polvo y ácaros",
       "Refresca el ambiente",
