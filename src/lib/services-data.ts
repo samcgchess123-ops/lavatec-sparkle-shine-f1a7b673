@@ -137,9 +137,9 @@ export const services: ServiceDetail[] = [
     icon: Blinds,
     title: "Cortinas",
     shortDesc:
-      "Lavado de cortinas sin desmontar. Elimina polvo, ácaros y olores conservando la caída original.",
+      "Lavado de cortinas con vapor. Elimina polvo, ácaros y olores conservando la caída original.",
     description:
-      "Limpieza de cortinas con vapor directamente donde están instaladas, sin necesidad de desmontarlas. Remueve polvo acumulado, ácaros y olores manteniendo la forma y caída original del textil.",
+      "Limpieza de cortinas con vapor. Remueve polvo acumulado, ácaros y olores manteniendo la forma y caída original del textil.",
     benefits: [
       "Conserva la forma original",
       "Elimina polvo y ácaros",
