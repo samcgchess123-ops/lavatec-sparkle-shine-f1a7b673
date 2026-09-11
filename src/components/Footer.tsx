@@ -84,11 +84,11 @@ export default function Footer() {
                 +57 304 657 1420
               </a>
               <a
-                href="mailto:contacto@lavatec.co"
+                href="mailto:lavatecclean@gmail.com"
                 className="flex items-start gap-3 text-sm text-background/65 hover:text-accent transition-colors"
               >
                 <Mail size={15} className="shrink-0 mt-0.5" />
-                contacto@lavatec.co
+                lavatecclean@gmail.com
               </a>
               <div className="flex items-start gap-3 text-sm text-background/65">
                 <MapPin size={15} className="shrink-0 mt-0.5" />
