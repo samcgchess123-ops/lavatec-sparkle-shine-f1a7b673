@@ -2,22 +2,80 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Send, CheckCircle2, Phone, MessageCircle, MapPin, Clock } from "lucide-react";
+import { Send, CheckCircle2, Phone, MessageCircle, MapPin, Clock, Loader2 } from "lucide-react";
+
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeX2m8qLEUUW_OOM-cmZgIx5nfLOnI9DD99CysS65QjJ345KQ/formResponse";
+
+const ENTRIES = {
+  nombre: "entry.49450774",
+  telefono: "entry.594994153",
+  servicio: "entry.1463253366",
+  direccion: "entry.1720829793",
+  mensaje: "entry.2085334526",
+} as const;
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [form, setForm] = useState({
+    nombre: "",
+    telefono: "",
+    servicio: "",
+    direccion: "",
+    mensaje: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const set = (k: keyof typeof form) => (v: string) =>
+    setForm((f) => ({ ...f, [k]: v.slice(0, 1000) }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    if (sending) return;
+
+    const nombre = form.nombre.trim();
+    const telefono = form.telefono.trim();
+    const direccion = form.direccion.trim();
+
+    if (!nombre || !telefono || !form.servicio || !direccion) {
+      setError("Por favor completa todos los campos obligatorios.");
+      return;
+    }
+
+    setError("");
+    setSending(true);
+
+    const body = new URLSearchParams();
+    body.append(ENTRIES.nombre, nombre);
+    body.append(ENTRIES.telefono, telefono);
+    body.append(ENTRIES.servicio, form.servicio);
+    body.append(ENTRIES.direccion, direccion);
+    body.append(ENTRIES.mensaje, form.mensaje.trim());
+
+    try {
+      await fetch(GOOGLE_FORM_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      setSent(true);
+    } catch {
+      setError(
+        "No pudimos enviar tu solicitud. Revisa tu conexión o escríbenos por WhatsApp."
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
-    <section className="py-24 md:py-32 bg-background">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-10">
+    <section className="py-20 md:py-32 bg-background overflow-x-hidden">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-5 gap-6 lg:gap-10">
           {/* Form */}
-          <div className="lg:col-span-3 bg-card border border-border rounded-3xl p-7 md:p-10 premium-shadow">
+          <div className="lg:col-span-3 bg-card border border-border rounded-3xl p-6 sm:p-8 md:p-10 premium-shadow">
             {sent ? (
               <div className="text-center py-12">
                 <div className="w-16 h-16 rounded-full bg-leaf/20 flex items-center justify-center mx-auto mb-4">
@@ -35,20 +93,42 @@ export default function ContactForm() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <Label htmlFor="nombre" className="mb-1.5 block">Nombre</Label>
-                    <Input id="nombre" placeholder="Tu nombre completo" required />
+                    <Input
+                      id="nombre"
+                      name="nombre"
+                      autoComplete="name"
+                      maxLength={100}
+                      placeholder="Tu nombre completo"
+                      value={form.nombre}
+                      onChange={(e) => set("nombre")(e.target.value)}
+                      required
+                    />
                   </div>
                   <div>
                     <Label htmlFor="telefono" className="mb-1.5 block">Teléfono</Label>
-                    <Input id="telefono" type="tel" placeholder="+57 300 123 4567" required />
+                    <Input
+                      id="telefono"
+                      name="telefono"
+                      type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      maxLength={30}
+                      placeholder="+57 300 123 4567"
+                      value={form.telefono}
+                      onChange={(e) => set("telefono")(e.target.value)}
+                      required
+                    />
                   </div>
                 </div>
                 <div>
                   <Label htmlFor="servicio" className="mb-1.5 block">Servicio de interés</Label>
                   <select
                     id="servicio"
+                    name="servicio"
                     required
-                    className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                    defaultValue=""
+                    value={form.servicio}
+                    onChange={(e) => set("servicio")(e.target.value)}
+                    className="w-full h-11 rounded-md border border-input bg-background px-3 py-2 text-base sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                   >
                     <option value="" disabled>Selecciona un servicio</option>
                     <option>Limpieza de Muebles</option>
@@ -61,20 +141,42 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <Label htmlFor="direccion" className="mb-1.5 block">Dirección</Label>
-                  <Input id="direccion" placeholder="Tu dirección en Barranquilla" required />
+                  <Input
+                    id="direccion"
+                    name="direccion"
+                    autoComplete="street-address"
+                    maxLength={200}
+                    placeholder="Tu dirección"
+                    value={form.direccion}
+                    onChange={(e) => set("direccion")(e.target.value)}
+                    required
+                  />
                 </div>
                 <div>
                   <Label htmlFor="mensaje" className="mb-1.5 block">Mensaje (opcional)</Label>
                   <textarea
                     id="mensaje"
+                    name="mensaje"
                     rows={3}
+                    maxLength={1000}
                     placeholder="Cuéntanos más sobre lo que necesitas"
-                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                    value={form.mensaje}
+                    onChange={(e) => set("mensaje")(e.target.value)}
+                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-base sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                   />
                 </div>
-                <Button variant="cta" size="lg" type="submit" className="w-full rounded-full">
-                  <Send size={16} />
-                  Enviar Solicitud
+                {error && (
+                  <p className="text-sm text-destructive" role="alert">{error}</p>
+                )}
+                <Button
+                  variant="cta"
+                  size="lg"
+                  type="submit"
+                  disabled={sending}
+                  className="w-full rounded-full"
+                >
+                  {sending ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                  {sending ? "Enviando…" : "Enviar Solicitud"}
                 </Button>
                 <p className="text-[11px] text-center text-muted-foreground">
                   Te contactamos en menos de 1 hora en horario laboral.
